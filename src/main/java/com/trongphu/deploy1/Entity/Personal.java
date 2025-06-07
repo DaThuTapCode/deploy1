@@ -45,6 +45,7 @@ public class Personal {
         return address;
     }
 
+
     public void setAddress(String address) {
         this.address = address;
     }
