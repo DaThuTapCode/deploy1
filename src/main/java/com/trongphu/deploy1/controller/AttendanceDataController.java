@@ -1,6 +1,7 @@
 package com.trongphu.deploy1.controller;
 
 import com.trongphu.deploy1.Entity.AttendanceData;
+import com.trongphu.deploy1.Entity.Parent;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,10 +15,10 @@ import java.util.List;
 public class AttendanceDataController {
 
     @PostMapping("/fake-attendance-data")
-    public ResponseEntity<List<AttendanceData>> fakeAttendanceData() {
+    public ResponseEntity<?> fakeAttendanceData() {
         List<AttendanceData> fakeList = new ArrayList<>();
         String fixedDate = "2025-06-09";
-        int totalStaff = 4000;
+        int totalStaff = 8000;
 
         for (int i = 1; i <= totalStaff; i++) {
             String name = "NV" + String.format("%04d", i);
@@ -35,7 +36,7 @@ public class AttendanceDataController {
             fakeList.add(new AttendanceData(name, serial, enrollid, 1, mode, event, timeOut));
         }
 
-        return ResponseEntity.ok(fakeList);
+        return ResponseEntity.ok(new Parent("SN01283714", fakeList));
     }
 
 
